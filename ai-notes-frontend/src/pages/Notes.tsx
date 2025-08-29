@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../api";
 import Navbar from "../components/Navbar";
 import Spinner from "../components/Spinner";
+import "./Notes.css";
 
 interface Note {
   id: number;
@@ -95,74 +96,73 @@ export default function Notes() {
   };
 
   return (
-    <div>
+    <div className="notes-container">
       <Navbar />
-      <div className="max-w-2xl mx-auto mt-6 p-4">
-        <h2 className="text-2xl font-bold mb-4">
-          {editingId ? "Edit Note" : "Create Note"}
-        </h2>
-        <input
-          className="border p-2 w-full mb-2"
-          placeholder="Title"
-          value={newNote.title}
-          onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
-        />
-        <textarea
-          className="border p-2 w-full mb-2"
-          rows={4}
-          placeholder="Content"
-          value={newNote.content}
-          onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
-        />
-        <div className="flex gap-2">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={handleSave}
-            disabled={loading}
-          >
-            {editingId ? "Update Note" : "Add Note"}
-          </button>
-          <button
-            className="bg-purple-500 text-white px-4 py-2 rounded"
-            onClick={() => handleSuggestTitle(newNote.content)}
-            disabled={loading}
-          >
-            AI Suggest Title
-          </button>
+
+      <div className="notes-content">
+        <div className="create-note">
+          <h2>{editingId ? "Edit Note" : "Create Note"}</h2>
+          <input
+            className="note-input"
+            placeholder="Title"
+            value={newNote.title}
+            onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
+          />
+          <textarea
+            className="note-textarea"
+            rows={4}
+            placeholder="Content"
+            value={newNote.content}
+            onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
+          />
+          <div className="note-buttons">
+            <button className="note-button" onClick={handleSave} disabled={loading}>
+              {editingId ? "Update Note" : "Add Note"}
+            </button>
+            {/* <button
+              className="note-button secondary"
+              onClick={() => handleSuggestTitle(newNote.content)}
+              disabled={loading}
+            >
+              AI Suggest Title
+            </button> */}
+          </div>
         </div>
 
         {loading && <Spinner />}
 
-        <h2 className="text-2xl font-bold mt-6">My Notes</h2>
-        {notes.map((note) => (
-          <div key={note.id} className="border p-3 mt-2 rounded shadow">
-            <h3 className="text-xl font-semibold">{note.title}</h3>
-            <p className="text-gray-700">{note.content}</p>
-            <div className="flex gap-2 mt-2">
-              <button
-                className="bg-green-500 text-white px-3 py-1 rounded"
-                onClick={() => handleEdit(note)}
-                disabled={loading}
-              >
-                Edit
-              </button>
-              <button
-                className="bg-red-500 text-white px-3 py-1 rounded"
-                onClick={() => handleDelete(note.id)}
-                disabled={loading}
-              >
-                Delete
-              </button>
-              <button
-                className="bg-yellow-500 text-white px-3 py-1 rounded"
-                onClick={() => handleSummarize(note.content)}
-                disabled={loading}
-              >
-                Summarize
-              </button>
+        <div className="notes-list">
+          <h2>My Notes</h2>
+          {notes.map((note) => (
+            <div key={note.id} className="note-card">
+              <h3>{note.title}</h3>
+              <p>{note.content}</p>
+              <div className="note-actions">
+                <button
+                  className="action-button edit"
+                  onClick={() => handleEdit(note)}
+                  disabled={loading}
+                >
+                  Edit
+                </button>
+                <button
+                  className="action-button delete"
+                  onClick={() => handleDelete(note.id)}
+                  disabled={loading}
+                >
+                  Delete
+                </button>
+                <button
+                  className="action-button summarize"
+                  onClick={() => handleSummarize(note.content)}
+                  disabled={loading}
+                >
+                  Summarize
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

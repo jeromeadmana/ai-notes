@@ -1,0 +1,159 @@
+/* General Layout */
+.notes-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff9c4;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Top Navbar */
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.notes-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f57f17;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout-button {
+  background: #fbc02d;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease-in-out;
+}
+
+.logout-button:hover {
+  background: #f57f17;
+  transform: translateY(-2px);
+}
+
+.logout-button:active {
+  transform: translateY(1px);
+}
+
+/* Create Note Section */
+.create-note {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.create-note h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.note-input,
+.note-textarea {
+  width: calc(100% - 2rem);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 2px solid #fbc02d;
+  border-radius: 8px;
+  background: #fffde7;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.note-input:focus,
+.note-textarea:focus {
+  border-color: #f57f17;
+}
+
+.note-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.note-button {
+  background: #fbc02d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease-in-out;
+}
+
+.note-button:hover {
+  background: #f57f17;
+  transform: translateY(-2px);
+}
+
+.note-button:active {
+  transform: translateY(1px);
+}
+
+/* Notes List */
+.notes-list h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.note-card {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.note-card:hover {
+  transform: scale(1.01);
+}
+
+.note-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #f57f17;
+}
+
+.note-card p {
+  color: #333;
+  margin: 0.5rem 0 1rem;
+}
+
+.note-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.action-button {
+  background: #fbc02d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease-in-out;
+}
+
+.action-button:hover {
+  background: #f57f17;
+  transform: translateY(-2px);
+}
+
+.action-button:active {
+  transform: translateY(1px);
+}
