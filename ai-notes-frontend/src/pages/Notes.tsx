@@ -19,6 +19,8 @@ export default function Notes() {
   const [loading, setLoading] = useState(false);
   const [hideButton, setHideButton] = useState(false);
 
+  setHideButton(false); // Set to false to hide the AI Suggest Title button
+
   useEffect(() => {
     fetchNotes();
   }, []);
