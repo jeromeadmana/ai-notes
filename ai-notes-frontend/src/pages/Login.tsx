@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
+import "./Login.css";
 
 export default function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -17,21 +18,26 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-20">
-      <input
-        className="border p-2 mb-2"
-        placeholder="Username"
-        onChange={(e) => setForm({ ...form, username: e.target.value })}
-      />
-      <input
-        type="password"
-        className="border p-2 mb-2"
-        placeholder="Password"
-        onChange={(e) => setForm({ ...form, password: e.target.value })}
-      />
-      <button className="bg-blue-500 text-white p-2" onClick={handleLogin}>
-        Login
-      </button>
+    <div className="login-container">
+      <h1 className="login-hero">AI-Notes</h1>
+
+      <div className="login-card">
+        <h2 className="mb-4 text-xl font-bold text-gray-700">Login</h2>
+        <input
+          className="login-input"
+          placeholder="Username"
+          onChange={(e) => setForm({ ...form, username: e.target.value })}
+        />
+        <input
+          type="password"
+          className="login-input"
+          placeholder="Password"
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        />
+        <button className="login-button" onClick={handleLogin}>
+          Login
+        </button>
+      </div>
     </div>
   );
 }
