@@ -20,12 +20,22 @@ export const loginUser = async (req, res) => {
     const user = result.rows[0];
     if (!user) return res.status(400).json({ error: 'User not found' });
 
+    console.log("🔑 Plain password from request:", password);
+    console.log("🔒 Hashed password from DB:", user.password);
+
+    const hashedPayload = await bcrypt.hash(password, 10);
+    console.log("🔒 Payload password (bcrypt hash):", hashedPayload);
+
     const match = await bcrypt.compare(password, user.password);
+    console.log("✅ Password match result:", match);
+
     if (!match) return res.status(400).json({ error: 'Invalid password' });
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
   } catch (err) {
+    console.error("❌ Error in loginUser:", err);
     res.status(500).json({ error: err.message });
   }
 };
+
