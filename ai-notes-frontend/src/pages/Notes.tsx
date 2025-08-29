@@ -17,6 +17,7 @@ export default function Notes() {
   const [newNote, setNewNote] = useState({ title: "", content: "" });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
+  const [hideButton, setHideButton] = useState(false);
 
   useEffect(() => {
     fetchNotes();
@@ -119,13 +120,15 @@ export default function Notes() {
             <button className="note-button" onClick={handleSave} disabled={loading}>
               {editingId ? "Update Note" : "Add Note"}
             </button>
-            {/* <button
-              className="note-button secondary"
-              onClick={() => handleSuggestTitle(newNote.content)}
-              disabled={loading}
-            >
-              AI Suggest Title
-            </button> */}
+            {!hideButton && (
+              <button
+                className="note-button secondary"
+                onClick={() => handleSuggestTitle(newNote.content)}
+                disabled={loading}
+              >
+                AI Suggest Title
+              </button>
+            )}
           </div>
         </div>
 
