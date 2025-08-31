@@ -17,10 +17,10 @@ export default function Notes() {
   const [newNote, setNewNote] = useState({ title: "", content: "" });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
-  const [hideButton, setHideButton] = useState(false);
+  const [hideButton, setHideButton] = useState(true);
 
   useEffect(() => {
-    setHideButton(false);
+    setHideButton(true);
   }, []);
 
   useEffect(() => {
